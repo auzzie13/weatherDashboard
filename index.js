@@ -8,8 +8,8 @@ $(document).ready(function() {
         $("#icon").append(obj1.icon);
         var dataEL = $("#data");
         var tempEl = $("<li>").text("Temperature: " + obj1.temp);
-        var humidityEl = $("<li>").text("Humidity: " + obj1.humidity);
-        var windSpeedEl = $("<li>").text("Wind Speed: " + obj1.wind);
+        var humidityEl = $("<li>").text("Humidity: " + obj1.humidity + "%");
+        var windSpeedEl = $("<li>").text("Wind Speed: " + obj1.wind + " MPH");
         dataEL.append(tempEl);
         dataEL.append(humidityEl);
         dataEL.append(windSpeedEl);
@@ -17,40 +17,51 @@ $(document).ready(function() {
 //function to build 5 day forecast
     function buildFiveDay (obj2) {
         var dayEl = $("#fiveDay");
+        var day1El = $("<div>").addClass("day1");
+        var day2El = $("<div>").addClass("day2");
+        var day3El = $("<div>").addClass("day3");
+        var day4El = $("<div>").addClass("day4");
+        var day5El = $("<div>").addClass("day5");
         var day1DateEl = $("<div>").text(obj2.dateDay1);
         var day1TempEl = $("<div>").text("Temperature: " + obj2.tempDay1);
-        var day1HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay1);
+        var day1HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay1 + "%");
         var day2DateEl = $("<div>").text(obj2.dateDay2);
         var day2TempEl = $("<div>").text("Temperature: " + obj2.tempDay2);
-        var day2HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay2);
+        var day2HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay2+ "%");
         var day3DateEl = $("<div>").text(obj2.dateDay3);
         var day3TempEl = $("<div>").text("Temperature: " + obj2.tempDay3);
-        var day3HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay3);
+        var day3HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay3+ "%");
         var day4DateEl = $("<div>").text(obj2.dateDay4);
         var day4TempEl = $("<div>").text("Temperature: " + obj2.tempDay4);
-        var day4HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay4);
+        var day4HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay4+ "%");
         var day5DateEl = $("<div>").text(obj2.dateDay5);
         var day5TempEl = $("<div>").text("Temperature: " + obj2.tempDay5);
-        var day5HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay5);
-        dayEl.append(day1DateEl);
-        dayEl.append(day1TempEl);
-        dayEl.append(day1HumidityEl);
+        var day5HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay5+ "%");
+        day1El.append(day1DateEl);
+        day1El.append(day1TempEl);
+        day1El.append(day1HumidityEl);
+        dayEl.append(day1El);
 
-        dayEl.append(day2DateEl);
-        dayEl.append(day2TempEl);
-        dayEl.append(day2HumidityEl);
+        day2El.append(day2DateEl);
+        day2El.append(day2TempEl);
+        day2El.append(day2HumidityEl);
+        dayEl.append(day2El);
 
-        dayEl.append(day3DateEl);
-        dayEl.append(day3TempEl);
-        dayEl.append(day3HumidityEl);
+        day3El.append(day3DateEl);
+        day3El.append(day3TempEl);
+        day3El.append(day3HumidityEl);
+        dayEl.append(day3El);
 
-        dayEl.append(day4DateEl);
-        dayEl.append(day4TempEl);
-        dayEl.append(day4HumidityEl);
+        day4El.append(day4DateEl);
+        day4El.append(day4TempEl);
+        day4El.append(day4HumidityEl);
+        dayEl.append(day4El);
 
-        dayEl.append(day5DateEl);
-        dayEl.append(day5TempEl);
-        dayEl.append(day5HumidityEl);
+        day5El.append(day5DateEl);
+        day5El.append(day5TempEl);
+        day5El.append(day5HumidityEl);
+        dayEl.append(day5El);
+
     }
     
 //click function

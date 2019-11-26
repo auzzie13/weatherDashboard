@@ -19,8 +19,14 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
 }
 
 .box {
     background-color: #eee;
+}
+
+#fiveDay {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
