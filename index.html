@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>Weather Dashboard</header>
+    <div class="wrapper">
+    <div class="box" id="searchBox">
+        <h1>Search for a City</h1>
+        <div id="citySearch">
+            <input type="text" id="cityInput">
+            <button id="search">Go</button>
+        </div>
+        <div id="searchHistory"></div>
+    </div>
+    
+    <div class="box" id="dataBox">
+        <div id="dataBoxHeader">
+            <span id="city"></span>
+            <span id="date"></span>
+            <img id="icon"></img>
+        </div>
+        <ul id="data"></ul>
+    </div>
+    
+    <div class="box" id="fiveDay">
+    </div>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

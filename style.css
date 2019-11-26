@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+h1 {
+    font-size: 18px;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+}
+
+.box {
+    background-color: #eee;
+}
