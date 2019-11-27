@@ -1,10 +1,10 @@
 * {
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', 'Times', 'serif'    ;
 }
 
 header {
-    background-color: #343a40;
+    background-color: #DCC7AA;
     color: #fff;
     text-align: center;
     font-size: 36px;
@@ -19,14 +19,38 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 1em;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(250px, auto);
+    background-color: #dcc7aa;
 }
 
 .box {
-    background-color: #eee;
+    background-color: #6b7a8f;
+    color: #fff;
+    font-size: 24px;
+}
+
+#searchBox {
+    grid-row: 1/3;
+    text-align: center;
+    
+}
+
+#dataBox {
+    border: 5px solid #f7882f;
+}
+
+#city {
+    font-size: 36px;
 }
 
 #fiveDay {
+    grid-column: 2;
+    text-align: center;
+    border: 5px solid #f7c331;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 5, 1fr;
+}
+
+.day1, .day2, .day3, .day4, .day5 {
+    border: 1px solid #f7c331;
 }
