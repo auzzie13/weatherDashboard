@@ -10,7 +10,6 @@ start by searching for a city in the search bar.
 
 Issues:
     1. saving a city after it has been searched
-    2. getting picture icon from API
-    3. add degree symbol
-    4. 5 day forecast to appear in one row as columns
-    5. locate UV index
+    2. add degree symbol
+    3. 5 day forecast to appear in one row as columns
+    4. locate UV index

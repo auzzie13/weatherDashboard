@@ -5,11 +5,11 @@ $(document).ready(function() {
     function buildDataBox (obj1) {
         $("#city").text(obj1.name);
         $("#date").text(obj1.date);
-        $("#icon").append(obj1.icon);
+        $("#icon").append(obj1.iconEl);
         var dataEL = $("#data");
-        var tempEl = $("<li>").text("Temperature: " + obj1.temp);
-        var humidityEl = $("<li>").text("Humidity: " + obj1.humidity + "%");
-        var windSpeedEl = $("<li>").text("Wind Speed: " + obj1.wind + " MPH");
+        var tempEl = $("<li><br>").text("Temperature: " + obj1.temp);
+        var humidityEl = $("<li><br>").text("Humidity: " + obj1.humidity + "%");
+        var windSpeedEl = $("<li><br>").text("Wind Speed: " + obj1.wind + " MPH");
         dataEL.append(tempEl);
         dataEL.append(humidityEl);
         dataEL.append(windSpeedEl);
@@ -23,41 +23,51 @@ $(document).ready(function() {
         var day4El = $("<div>").addClass("day4");
         var day5El = $("<div>").addClass("day5");
         var day1DateEl = $("<div>").text(obj2.dateDay1);
+        var day1IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay1 + '.png');
         var day1TempEl = $("<div>").text("Temperature: " + obj2.tempDay1);
         var day1HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay1 + "%");
         var day2DateEl = $("<div>").text(obj2.dateDay2);
+        var day2IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay2 + '.png');
         var day2TempEl = $("<div>").text("Temperature: " + obj2.tempDay2);
         var day2HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay2+ "%");
         var day3DateEl = $("<div>").text(obj2.dateDay3);
+        var day3IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay3 + '.png');
         var day3TempEl = $("<div>").text("Temperature: " + obj2.tempDay3);
         var day3HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay3+ "%");
         var day4DateEl = $("<div>").text(obj2.dateDay4);
+        var day4IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay4 + '.png');
         var day4TempEl = $("<div>").text("Temperature: " + obj2.tempDay4);
         var day4HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay4+ "%");
         var day5DateEl = $("<div>").text(obj2.dateDay5);
+        var day5IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay5 + '.png');
         var day5TempEl = $("<div>").text("Temperature: " + obj2.tempDay5);
         var day5HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay5+ "%");
         day1El.append(day1DateEl);
+        day1El.append(day1IconEl);
         day1El.append(day1TempEl);
         day1El.append(day1HumidityEl);
         dayEl.append(day1El);
 
         day2El.append(day2DateEl);
+        day2El.append(day2IconEl);
         day2El.append(day2TempEl);
         day2El.append(day2HumidityEl);
         dayEl.append(day2El);
 
         day3El.append(day3DateEl);
+        day3El.append(day3IconEl);
         day3El.append(day3TempEl);
         day3El.append(day3HumidityEl);
         dayEl.append(day3El);
 
         day4El.append(day4DateEl);
+        day4El.append(day4IconEl);
         day4El.append(day4TempEl);
         day4El.append(day4HumidityEl);
         dayEl.append(day4El);
 
         day5El.append(day5DateEl);
+        day5El.append(day5IconEl);
         day5El.append(day5TempEl);
         day5El.append(day5HumidityEl);
         dayEl.append(day5El);
@@ -66,13 +76,22 @@ $(document).ready(function() {
     
 //click function
     $("#search").click(function() {
+        var city = $("#cityInput").val().trim();
+        cityFormat(city);
+       console.log(localStorage.getItem("new city"));
+       if (localStorage.getItem("new city") !== null) {
+           var tempCity = localStorage.getItem("new city");
 
-    var city = $("#cityInput").val().trim();
-    cityFormat(city);
+           tempCity += "," + city;
+           localStorage.setItem('new city', tempCity);
+       } else {
+        localStorage.setItem('new city', city);
+       }
+
     var queryURLCurrent = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&uvi?&APPID=93db34aab5dfd344d185ccd0f5cfd855";
 
     var queryURLForecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&uvi?&APPID=93db34aab5dfd344d185ccd0f5cfd855"
-
+//first ajax call-current weather
     $.ajax({
         url: queryURLCurrent,
         method: "GET"
@@ -82,6 +101,8 @@ $(document).ready(function() {
             var cityName = response.name;
             var date = now;
             var icon = response.weather[0].icon;
+            var iconEl = $("#icon");
+            iconEl.attr('src', 'http://openweathermap.org/img/wn/' + icon + '.png');
             var tempCurrent = Math.round(response.main.temp);
             var humidityCurrent = response.main.humidity;
             var windSpeedCurrent = response.wind.speed;
@@ -93,7 +114,7 @@ $(document).ready(function() {
             var obj1 = {
                 name: cityName,
                 date: date,
-                picture: icon,
+                picture: iconEl,
                 temp: tempCurrent,
                 humidity: humidityCurrent,
                 wind: windSpeedCurrent
@@ -101,6 +122,7 @@ $(document).ready(function() {
             buildDataBox(obj1);
           }
       })
+      //second ajax call-forecast
       $.ajax({
         url: queryURLForecast,
         method: "GET"
@@ -108,39 +130,49 @@ $(document).ready(function() {
         console.log(response)
         if (response) {
             var dateForecastDay1 = moment(response.list[0].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMMM DD, YYYY");
+            var iconForecastDay1 = response.list[0].weather[0].icon;
             var tempForecastDay1 = Math.round(response.list[0].main.temp_max);
             var humidityForecastDay1 = response.list[0].main.humidity;
  
             var dateForecastDay2 = moment(response.list[7].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMMM DD, YYYY");
+            var iconForecastDay2 = response.list[7].weather[0].icon;
             var tempForecastDay2 = Math.round(response.list[7].main.temp_max);
             var humidityForecastDay2 = response.list[7].main.humidity;
 
             var dateForecastDay3 = moment(response.list[15].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMMM DD, YYYY");
+            var iconForecastDay3 = response.list[15].weather[0].icon;
             var tempForecastDay3 = Math.round(response.list[15].main.temp_max);
             var humidityForecastDay3 = response.list[15].main.humidity;
 
             var dateForecastDay4 = moment(response.list[23].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMMM DD, YYYY");
+            var iconForecastDay4 = response.list[23].weather[0].icon;
             var tempForecastDay4 = Math.round(response.list[23].main.temp_max);
             var humidityForecastDay4 = response.list[23].main.humidity;
 
             var dateForecastDay5 = moment(response.list[31].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMMM DD, YYYY");
+            var iconForecastDay5 = response.list[31].weather[0].icon;
             var tempForecastDay5 = Math.round(response.list[31].main.temp_max);
             var humidityForecastDay5 = response.list[31].main.humidity;
 
             var obj2 = {
                 dateDay1: dateForecastDay1,
+                iconDay1: iconForecastDay1,
                 tempDay1: tempForecastDay1,
                 humidityDay1: humidityForecastDay1,
                 dateDay2: dateForecastDay2,
+                iconDay2: iconForecastDay2,
                 tempDay2: tempForecastDay2,
                 humidityDay2: humidityForecastDay2,
                 dateDay3: dateForecastDay3,
+                iconDay3: iconForecastDay3,
                 tempDay3: tempForecastDay3,
                 humidityDay3: humidityForecastDay3,
                 dateDay4: dateForecastDay4,
+                iconDay4: iconForecastDay4,
                 tempDay4: tempForecastDay4,
                 humidityDay4: humidityForecastDay4,
                 dateDay5: dateForecastDay5,
+                iconDay5: iconForecastDay5,
                 tempDay5: tempForecastDay5,
                 humidityDay5: humidityForecastDay5
             }
