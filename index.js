@@ -6,13 +6,13 @@ $(document).ready(function() {
         $("#city").text(obj1.name);
         $("#date").text(obj1.date);
         $("#icon").append(obj1.iconEl);
-        var dataEL = $("#data");
-        var tempEl = $("<li><br>").text("Temperature: " + obj1.temp);
+        var dataEl = $("#data");
+        var tempEl = $("<li><br>").text("Temperature: " + obj1.temp + "\xB0 F");
         var humidityEl = $("<li><br>").text("Humidity: " + obj1.humidity + "%");
         var windSpeedEl = $("<li><br>").text("Wind Speed: " + obj1.wind + " MPH");
-        dataEL.append(tempEl);
-        dataEL.append(humidityEl);
-        dataEL.append(windSpeedEl);
+        dataEl.append(tempEl);
+        dataEl.append(humidityEl);
+        dataEl.append(windSpeedEl);
     };
 //function to build 5 day forecast
     function buildFiveDay (obj2) {
@@ -24,23 +24,23 @@ $(document).ready(function() {
         var day5El = $("<div>").addClass("day5");
         var day1DateEl = $("<div>").text(obj2.dateDay1);
         var day1IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay1 + '.png');
-        var day1TempEl = $("<div>").text("Temperature: " + obj2.tempDay1);
+        var day1TempEl = $("<div>").text("Temperature: " + obj2.tempDay1 + "\xB0 F");
         var day1HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay1 + "%");
         var day2DateEl = $("<div>").text(obj2.dateDay2);
         var day2IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay2 + '.png');
-        var day2TempEl = $("<div>").text("Temperature: " + obj2.tempDay2);
+        var day2TempEl = $("<div>").text("Temperature: " + obj2.tempDay2 + "\xB0 F");
         var day2HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay2+ "%");
         var day3DateEl = $("<div>").text(obj2.dateDay3);
         var day3IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay3 + '.png');
-        var day3TempEl = $("<div>").text("Temperature: " + obj2.tempDay3);
+        var day3TempEl = $("<div>").text("Temperature: " + obj2.tempDay3 + "\xB0 F");
         var day3HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay3+ "%");
         var day4DateEl = $("<div>").text(obj2.dateDay4);
         var day4IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay4 + '.png');
-        var day4TempEl = $("<div>").text("Temperature: " + obj2.tempDay4);
+        var day4TempEl = $("<div>").text("Temperature: " + obj2.tempDay4 + "\xB0 F");
         var day4HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay4+ "%");
         var day5DateEl = $("<div>").text(obj2.dateDay5);
         var day5IconEl = $("<img>").attr('src', 'http://openweathermap.org/img/wn/' + obj2.iconDay5 + '.png');
-        var day5TempEl = $("<div>").text("Temperature: " + obj2.tempDay5);
+        var day5TempEl = $("<div>").text("Temperature: " + obj2.tempDay5 + "\xB0 F");
         var day5HumidityEl = $("<div>").text("Humidity: " + obj2.humidityDay5+ "%");
         day1El.append(day1DateEl);
         day1El.append(day1IconEl);
@@ -76,6 +76,7 @@ $(document).ready(function() {
     
 //click function
     $("#search").click(function() {
+        clearTemplate();
         var city = $("#cityInput").val().trim();
         cityFormat(city);
        console.log(localStorage.getItem("new city"));
@@ -181,7 +182,16 @@ $(document).ready(function() {
       });
 
     });
+//clears data box and fiveday forecast box
+function clearTemplate() {
+    var dataEl = $("#data");
+    var dayEl = $("#fiveDay");
+    dataEl.empty();
+    dayEl.empty();
 
+}
+
+//functions to properly format search city
 function cityFormat(myCity) {
         city = upperLower(myCity);
     };
