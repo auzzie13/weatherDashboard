@@ -5,7 +5,7 @@
 
 header {
     background-color: #DCC7AA;
-    color: #fff;
+    color: #6b7a8f;
     text-align: center;
     font-size: 36px;
     padding-top: 15px;
@@ -37,6 +37,7 @@ h1 {
 
 #dataBox {
     border: 5px solid #f7882f;
+    border-radius: 25px;
 }
 
 #city {
@@ -47,6 +48,7 @@ h1 {
     grid-column: 2;
     text-align: center;
     border: 5px solid #f7c331;
+    border-radius: 25px;
     display: grid;
     grid-template-columns: 5, 1fr;
 }
