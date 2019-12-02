@@ -1,5 +1,7 @@
 # weatherDashboard
 
+url:  https://auzzie13.github.io/weatherDashboard/
+
 application to pull weather data from a given city.
 
 start by searching for a city in the search bar.
