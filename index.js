@@ -75,7 +75,7 @@ $(document).ready(function() {
     }
     
 //click function
-    $("#search").on("click touchstart", function() {
+    $("#search").click("click", function() {
         clearTemplate();
         var city = $("#cityInput").val().trim();
         cityFormat(city);
