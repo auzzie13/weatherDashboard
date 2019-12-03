@@ -89,9 +89,9 @@ $(document).ready(function() {
         localStorage.setItem('new city', city);
        }
 
-    var queryURLCurrent = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&uvi?&APPID=93db34aab5dfd344d185ccd0f5cfd855";
+    var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&uvi?&APPID=93db34aab5dfd344d185ccd0f5cfd855";
 
-    var queryURLForecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&uvi?&APPID=93db34aab5dfd344d185ccd0f5cfd855"
+    var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&uvi?&APPID=93db34aab5dfd344d185ccd0f5cfd855"
 //first ajax call-current weather
     $.ajax({
         url: queryURLCurrent,
@@ -103,7 +103,7 @@ $(document).ready(function() {
             var date = now;
             var icon = response.weather[0].icon;
             var iconEl = $("#icon");
-            iconEl.attr('src', 'http://openweathermap.org/img/wn/' + icon + '.png');
+            iconEl.attr('src', 'https://openweathermap.org/img/wn/' + icon + '.png');
             var tempCurrent = Math.round(response.main.temp);
             var humidityCurrent = response.main.humidity;
             var windSpeedCurrent = response.wind.speed;
