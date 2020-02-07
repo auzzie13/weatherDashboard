@@ -2,15 +2,18 @@
 
 url:  https://auzzie13.github.io/weatherDashboard/
 
-application to pull weather data from a given city.
+## Description
 
-start by searching for a city in the search bar.
-    -upon entering city, data will populate in two boxes
-    -first box is the "data" box that will house the current conditions of given city
-    -second box is the "5 Day Forecast" box that will give the forecast for the next 5 days in given city
+A weather dashboard application with search functionality to find current weather conditions and the future weather outlook for multiple cities.
 
+## User Story
 
-Issues:
-    1. saving a city after it has been searched
-    2. 5 day forecast to appear in one row as columns
-    3. locate UV index
+As a traveler
+I want to see the weather outlook for multiple cities
+so that I can plan a trip accordingly
+
+## Languages
+-HTML
+-CSS
+-AJAX
+-Javascript
