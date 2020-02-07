@@ -49,10 +49,16 @@ h1 {
     text-align: center;
     border: 5px solid #f7c331;
     border-radius: 25px;
-    display: grid;
-    grid-template-columns: 5, 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .day1, .day2, .day3, .day4, .day5 {
     border: 1px solid #f7c331;
+    border-radius: 5px;
+    margin: 3px;
+    font-size: 12px;
+    width: 100px;
+    height: 150px;
 }
