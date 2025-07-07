@@ -1,19 +1,42 @@
-# weatherDashboard
+# Weather Dashboard
 
-url:  https://auzzie13.github.io/weatherDashboard/
+🌐 **Live Site:** [https://auzzie13.github.io/weatherDashboard/](https://auzzie13.github.io/weatherDashboard/)
 
-## Description
+## 📌 Description
 
-A weather dashboard application with search functionality to find current weather conditions and the future weather outlook for multiple cities.
+Weather Dashboard is a simple, responsive web application that allows users to search for current weather conditions and a five-day forecast for any city. The app is designed with travelers in mind, providing a quick and visual way to check weather outlooks while planning trips.
 
-## User Story
+Weather data is retrieved from the [OpenWeatherMap API](https://openweathermap.org/api) and includes:
+- City name and date
+- Current temperature, humidity, and wind speed
+- A five-day forecast with daily icons, temperature, and humidity
 
-As a traveler
-I want to see the weather outlook for multiple cities
-so that I can plan a trip accordingly
+---
 
-## Languages
--HTML
--CSS
--AJAX
--Javascript
+## 🧭 User Story
+
+> **As a traveler,**  
+> I want to see the weather outlook for multiple cities  
+> so that I can plan a trip accordingly.
+
+---
+
+## 🛠️ Built With
+
+- HTML5  
+- CSS3  
+- JavaScript (jQuery)  
+- Moment.js  
+- AJAX  
+- OpenWeatherMap API  
+
+---
+
+## 🔮 Future Enhancements
+
+- Add "UV Index" display with conditional color coding  
+- Add ability to remove search history entries  
+- Animate forecast cards on load  
+- Include loading state or skeleton UI  
+
+---
